@@ -8,20 +8,19 @@ import static org.springframework.http.HttpStatus.TOO_MANY_REQUESTS;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.RedisScript;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-@Slf4j
+@Component
+@RequiredArgsConstructor
 public class RateLimitingInterceptor implements HandlerInterceptor {
 
-  @Autowired
-  private RedisTemplate<String, String> redisTemplate;
+  private final RedisTemplate<String, String> redisTemplate;
 
-  @Autowired
-  private RedisScript<Boolean> rateLimitingScript;
+  private final RedisScript<Boolean> rateLimitingScript;
 
   private static final String API_KEY = "x-api-key";
 

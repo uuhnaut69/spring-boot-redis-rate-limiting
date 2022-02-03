@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/greeter")
 public class GreeterController {
 
-  @GetMapping
-  public String greeter() {
-    return "Hello";
-  }
+    @GetMapping
+    public String greeter() {
+        return "Hello";
+    }
 }

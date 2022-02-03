@@ -9,11 +9,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @RequiredArgsConstructor
 public class InterceptorConfiguration implements WebMvcConfigurer {
 
-  private final RateLimitingInterceptor rateLimitingInterceptor;
+    private final RateLimitingInterceptor rateLimitingInterceptor;
 
-  @Override
-  public void addInterceptors(InterceptorRegistry registry) {
-    registry.addInterceptor(rateLimitingInterceptor)
-        .addPathPatterns("/greeter/**");
-  }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(rateLimitingInterceptor)
+                .addPathPatterns("/greeter/**");
+    }
 }
